@@ -10,6 +10,8 @@ import {
 } from 'react-leaflet';
 import { useState, useEffect } from 'react';
 import { useCities } from '../context/CitiesContext';
+import { useGeolocation } from '../hooks/useGeolocation';
+import Button from './Button';
 
 function ChangeCenter({ position }) {
   const map = useMap();
@@ -28,9 +30,13 @@ function DeteckClick() {
 export default function Map() {
   const navigate = useNavigate();
   const { cities } = useCities();
-
   const [mapPosition, setMapPosition] = useState([40, 0]);
   const [searchParams, setSearchParams] = useSearchParams();
+  const {
+    isLoading: isLoadingPosition,
+    position: geolocationPosition,
+    getPosition,
+  } = useGeolocation();
 
   const mapLat = searchParams.get('lat');
   const mapLng = searchParams.get('lng');
@@ -39,12 +45,20 @@ export default function Map() {
     if (mapLat && mapLng) setMapPosition([mapLat, mapLng]);
   }, [mapLat, mapLng]);
 
+  useEffect(() => {
+    if (geolocationPosition)
+      setMapPosition([geolocationPosition.lat, geolocationPosition.lng]);
+  }, [geolocationPosition]);
+
   return (
     <div className={styles.mapContainer} onClick={() => navigate('form')}>
+      {!geolocationPosition && <Button type="position" onClick={getPosition}>
+        {isLoadingPosition ? 'Loading' : 'Use your position'}
+      </Button>}
       <MapContainer
         className={styles.map}
         center={mapPosition}
-        zoom={6}
+        zoom={12}
         scrollWheelZoom={true}
       >
         <TileLayer
