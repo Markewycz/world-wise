@@ -12,6 +12,7 @@ import { useState, useEffect } from 'react';
 import { useCities } from '../context/CitiesContext';
 import { useGeolocation } from '../hooks/useGeolocation';
 import Button from './Button';
+import { useUrlPosition } from '../hooks/useUrlPosition';
 
 function ChangeCenter({ position }) {
   const map = useMap();
@@ -31,15 +32,12 @@ export default function Map() {
   const navigate = useNavigate();
   const { cities } = useCities();
   const [mapPosition, setMapPosition] = useState([40, 0]);
-  const [searchParams, setSearchParams] = useSearchParams();
   const {
     isLoading: isLoadingPosition,
     position: geolocationPosition,
     getPosition,
   } = useGeolocation();
-
-  const mapLat = searchParams.get('lat');
-  const mapLng = searchParams.get('lng');
+  const [mapLat, mapLng] = useUrlPosition();
 
   useEffect(() => {
     if (mapLat && mapLng) setMapPosition([mapLat, mapLng]);
@@ -51,10 +49,15 @@ export default function Map() {
   }, [geolocationPosition]);
 
   return (
-    <div className={styles.mapContainer} onClick={() => navigate('form')}>
-      {!geolocationPosition && <Button type="position" onClick={getPosition}>
-        {isLoadingPosition ? 'Loading' : 'Use your position'}
-      </Button>}
+    <div
+      className={styles.mapContainer}
+      onClick={() => navigate(`form?lat=${mapLat}&lng=${mapLng}`)}
+    >
+      {!geolocationPosition && (
+        <Button type="position" onClick={getPosition}>
+          {isLoadingPosition ? 'Loading' : 'Use your position'}
+        </Button>
+      )}
       <MapContainer
         className={styles.map}
         center={mapPosition}
