@@ -1,0 +1,63 @@
+"filename", "language", "TypeScript", "JSON with Comments", "CSS", "TypeScript JSX", "JSON", "HTML", "Markdown", "JavaScript", "comment", "blank", "total"
+"c:\Users\konta\repos\02-react-projects\world-wise\.eslintrc.cjs", "JavaScript", 0, 0, 0, 0, 0, 0, 0, 18, 0, 1, 19
+"c:\Users\konta\repos\02-react-projects\world-wise\README.md", "Markdown", 0, 0, 0, 0, 0, 0, 19, 0, 0, 9, 28
+"c:\Users\konta\repos\02-react-projects\world-wise\data\cities.json", "JSON", 0, 0, 0, 0, 40, 0, 0, 0, 0, 0, 40
+"c:\Users\konta\repos\02-react-projects\world-wise\index.html", "HTML", 0, 0, 0, 0, 0, 13, 0, 0, 0, 1, 14
+"c:\Users\konta\repos\02-react-projects\world-wise\package-lock.json", "JSON", 0, 0, 0, 0, 10595, 0, 0, 0, 0, 1, 10596
+"c:\Users\konta\repos\02-react-projects\world-wise\package.json", "JSON", 0, 0, 0, 0, 34, 0, 0, 0, 0, 1, 35
+"c:\Users\konta\repos\02-react-projects\world-wise\src\App.tsx", "TypeScript JSX", 0, 0, 0, 34, 0, 0, 0, 0, 0, 3, 37
+"c:\Users\konta\repos\02-react-projects\world-wise\src\components\AppNav.module.css", "CSS", 0, 0, 24, 0, 0, 0, 0, 0, 1, 4, 29
+"c:\Users\konta\repos\02-react-projects\world-wise\src\components\AppNav.tsx", "TypeScript JSX", 0, 0, 0, 16, 0, 0, 0, 0, 0, 2, 18
+"c:\Users\konta\repos\02-react-projects\world-wise\src\components\BackButton.tsx", "TypeScript JSX", 0, 0, 0, 16, 0, 0, 0, 0, 0, 2, 18
+"c:\Users\konta\repos\02-react-projects\world-wise\src\components\Button.module.css", "CSS", 0, 0, 32, 0, 0, 0, 0, 0, 0, 4, 36
+"c:\Users\konta\repos\02-react-projects\world-wise\src\components\Button.tsx", "TypeScript JSX", 0, 0, 0, 8, 0, 0, 0, 0, 0, 2, 10
+"c:\Users\konta\repos\02-react-projects\world-wise\src\components\City.module.css", "CSS", 0, 0, 40, 0, 0, 0, 0, 0, 0, 8, 48
+"c:\Users\konta\repos\02-react-projects\world-wise\src\components\City.tsx", "TypeScript JSX", 0, 0, 0, 56, 0, 0, 0, 0, 0, 12, 68
+"c:\Users\konta\repos\02-react-projects\world-wise\src\components\CityItem.module.css", "CSS", 0, 0, 46, 0, 0, 0, 0, 0, 0, 9, 55
+"c:\Users\konta\repos\02-react-projects\world-wise\src\components\CityItem.tsx", "TypeScript JSX", 0, 0, 0, 34, 0, 0, 0, 0, 0, 5, 39
+"c:\Users\konta\repos\02-react-projects\world-wise\src\components\CityList.module.css", "CSS", 0, 0, 13, 0, 0, 0, 0, 0, 0, 3, 16
+"c:\Users\konta\repos\02-react-projects\world-wise\src\components\CityList.tsx", "TypeScript JSX", 0, 0, 0, 22, 0, 0, 0, 0, 0, 3, 25
+"c:\Users\konta\repos\02-react-projects\world-wise\src\components\CountryItem.module.css", "CSS", 0, 0, 16, 0, 0, 0, 0, 0, 0, 4, 20
+"c:\Users\konta\repos\02-react-projects\world-wise\src\components\CountryItem.tsx", "TypeScript JSX", 0, 0, 0, 10, 0, 0, 0, 0, 0, 3, 13
+"c:\Users\konta\repos\02-react-projects\world-wise\src\components\CountryList.module.css", "CSS", 0, 0, 11, 0, 0, 0, 0, 0, 0, 2, 13
+"c:\Users\konta\repos\02-react-projects\world-wise\src\components\CountryList.tsx", "TypeScript JSX", 0, 0, 0, 27, 0, 0, 0, 0, 0, 4, 31
+"c:\Users\konta\repos\02-react-projects\world-wise\src\components\Footer.module.css", "CSS", 0, 0, 7, 0, 0, 0, 0, 0, 0, 2, 9
+"c:\Users\konta\repos\02-react-projects\world-wise\src\components\Footer.tsx", "TypeScript JSX", 0, 0, 0, 10, 0, 0, 0, 0, 0, 2, 12
+"c:\Users\konta\repos\02-react-projects\world-wise\src\components\Form.module.css", "CSS", 0, 0, 38, 0, 0, 0, 0, 0, 0, 7, 45
+"c:\Users\konta\repos\02-react-projects\world-wise\src\components\Form.tsx", "TypeScript JSX", 0, 0, 0, 111, 0, 0, 0, 0, 2, 19, 132
+"c:\Users\konta\repos\02-react-projects\world-wise\src\components\Logo.module.css", "CSS", 0, 0, 3, 0, 0, 0, 0, 0, 0, 1, 4
+"c:\Users\konta\repos\02-react-projects\world-wise\src\components\Logo.tsx", "TypeScript JSX", 0, 0, 0, 10, 0, 0, 0, 0, 0, 3, 13
+"c:\Users\konta\repos\02-react-projects\world-wise\src\components\Map.module.css", "CSS", 0, 0, 31, 0, 0, 0, 0, 0, 1, 7, 39
+"c:\Users\konta\repos\02-react-projects\world-wise\src\components\Map.tsx", "TypeScript JSX", 0, 0, 0, 77, 0, 0, 0, 0, 0, 9, 86
+"c:\Users\konta\repos\02-react-projects\world-wise\src\components\Message.module.css", "CSS", 0, 0, 7, 0, 0, 0, 0, 0, 0, 1, 8
+"c:\Users\konta\repos\02-react-projects\world-wise\src\components\Message.tsx", "TypeScript JSX", 0, 0, 0, 9, 0, 0, 0, 0, 0, 3, 12
+"c:\Users\konta\repos\02-react-projects\world-wise\src\components\PageNav.module.css", "CSS", 0, 0, 29, 0, 0, 0, 0, 0, 1, 5, 35
+"c:\Users\konta\repos\02-react-projects\world-wise\src\components\PageNav.tsx", "TypeScript JSX", 0, 0, 0, 23, 0, 0, 0, 0, 0, 2, 25
+"c:\Users\konta\repos\02-react-projects\world-wise\src\components\Sidebar.module.css", "CSS", 0, 0, 9, 0, 0, 0, 0, 0, 0, 3, 12
+"c:\Users\konta\repos\02-react-projects\world-wise\src\components\Sidebar.tsx", "TypeScript JSX", 0, 0, 0, 15, 0, 0, 0, 0, 0, 4, 19
+"c:\Users\konta\repos\02-react-projects\world-wise\src\components\Spinner.module.css", "CSS", 0, 0, 19, 0, 0, 0, 0, 0, 0, 3, 22
+"c:\Users\konta\repos\02-react-projects\world-wise\src\components\Spinner.tsx", "TypeScript JSX", 0, 0, 0, 9, 0, 0, 0, 0, 0, 3, 12
+"c:\Users\konta\repos\02-react-projects\world-wise\src\components\SpinnerFullPage.module.css", "CSS", 0, 0, 5, 0, 0, 0, 0, 0, 0, 1, 6
+"c:\Users\konta\repos\02-react-projects\world-wise\src\components\SpinnerFullPage.tsx", "TypeScript JSX", 0, 0, 0, 10, 0, 0, 0, 0, 0, 3, 13
+"c:\Users\konta\repos\02-react-projects\world-wise\src\components\User.module.css", "CSS", 0, 0, 31, 0, 0, 0, 0, 0, 0, 4, 35
+"c:\Users\konta\repos\02-react-projects\world-wise\src\components\User.tsx", "TypeScript JSX", 0, 0, 0, 19, 0, 0, 0, 0, 9, 7, 35
+"c:\Users\konta\repos\02-react-projects\world-wise\src\context\CitiesContext.tsx", "TypeScript JSX", 0, 0, 0, 143, 0, 0, 0, 0, 0, 16, 159
+"c:\Users\konta\repos\02-react-projects\world-wise\src\hooks\useGeolocation.ts", "TypeScript", 26, 0, 0, 0, 0, 0, 0, 0, 0, 6, 32
+"c:\Users\konta\repos\02-react-projects\world-wise\src\hooks\useUrlPosition.ts", "TypeScript", 7, 0, 0, 0, 0, 0, 0, 0, 0, 3, 10
+"c:\Users\konta\repos\02-react-projects\world-wise\src\index.css", "CSS", 0, 0, 58, 0, 0, 0, 0, 0, 10, 11, 79
+"c:\Users\konta\repos\02-react-projects\world-wise\src\main.tsx", "TypeScript JSX", 0, 0, 0, 9, 0, 0, 0, 0, 0, 2, 11
+"c:\Users\konta\repos\02-react-projects\world-wise\src\pages\AppLayout.module.css", "CSS", 0, 0, 7, 0, 0, 0, 0, 0, 0, 1, 8
+"c:\Users\konta\repos\02-react-projects\world-wise\src\pages\AppLayout.tsx", "TypeScript JSX", 0, 0, 0, 11, 0, 0, 0, 0, 0, 2, 13
+"c:\Users\konta\repos\02-react-projects\world-wise\src\pages\Homepage.module.css", "CSS", 0, 0, 31, 0, 0, 0, 0, 0, 0, 4, 35
+"c:\Users\konta\repos\02-react-projects\world-wise\src\pages\Homepage.tsx", "TypeScript JSX", 0, 0, 0, 25, 0, 0, 0, 0, 0, 3, 28
+"c:\Users\konta\repos\02-react-projects\world-wise\src\pages\Login.module.css", "CSS", 0, 0, 22, 0, 0, 0, 0, 0, 1, 4, 27
+"c:\Users\konta\repos\02-react-projects\world-wise\src\pages\Login.tsx", "TypeScript JSX", 0, 0, 0, 35, 0, 0, 0, 0, 1, 5, 41
+"c:\Users\konta\repos\02-react-projects\world-wise\src\pages\PageNotFound.tsx", "TypeScript JSX", 0, 0, 0, 7, 0, 0, 0, 0, 0, 1, 8
+"c:\Users\konta\repos\02-react-projects\world-wise\src\pages\Pricing.tsx", "TypeScript JSX", 0, 0, 0, 24, 0, 0, 0, 0, 1, 2, 27
+"c:\Users\konta\repos\02-react-projects\world-wise\src\pages\Product.module.css", "CSS", 0, 0, 29, 0, 0, 0, 0, 0, 0, 6, 35
+"c:\Users\konta\repos\02-react-projects\world-wise\src\pages\Product.tsx", "TypeScript JSX", 0, 0, 0, 29, 0, 0, 0, 0, 0, 2, 31
+"c:\Users\konta\repos\02-react-projects\world-wise\src\vite-env.d.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 2
+"c:\Users\konta\repos\02-react-projects\world-wise\tsconfig.json", "JSON with Comments", 0, 21, 0, 0, 0, 0, 0, 0, 2, 3, 26
+"c:\Users\konta\repos\02-react-projects\world-wise\tsconfig.node.json", "JSON", 0, 0, 0, 0, 10, 0, 0, 0, 0, 1, 11
+"c:\Users\konta\repos\02-react-projects\world-wise\vite.config.ts", "TypeScript", 5, 0, 0, 0, 0, 0, 0, 0, 1, 2, 8
+"Total", "-", 38, 21, 508, 799, 10679, 13, 19, 18, 31, 247, 12373

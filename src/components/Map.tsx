@@ -37,7 +37,7 @@ export default function Map() {
     position: geolocationPosition,
     getPosition,
   } = useGeolocation();
-  const [mapLat, mapLng] = useUrlPosition();
+  const [mapLat, mapLng] = useUrlPosition(geolocationPosition);
 
   useEffect(() => {
     if (mapLat && mapLng) setMapPosition([mapLat, mapLng]);
@@ -48,11 +48,15 @@ export default function Map() {
       setMapPosition([geolocationPosition.lat, geolocationPosition.lng]);
   }, [geolocationPosition]);
 
+  function handleNavigate(e) {
+    if (e.target.localName === 'button') return;
+    if (JSON.stringify(mapPosition) === JSON.stringify([mapLat, mapLng]))
+      return;
+    navigate(`form?lat=${mapLat}&lng=${mapLng}`);
+  }
+
   return (
-    <div
-      className={styles.mapContainer}
-      onClick={() => navigate(`form?lat=${mapLat}&lng=${mapLng}`)}
-    >
+    <div className={styles.mapContainer} onClick={handleNavigate}>
       {!geolocationPosition && (
         <Button type="position" onClick={getPosition}>
           {isLoadingPosition ? 'Loading' : 'Use your position'}
