@@ -18,6 +18,7 @@ export default function CityItem({ city }) {
     deleteCity(id);
   }
 
+
   return (
     <li>
       <Link

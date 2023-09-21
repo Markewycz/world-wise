@@ -13,6 +13,14 @@ import Message from './Message';
 import { useCities } from '../context/CitiesContext';
 import { useNavigate } from 'react-router-dom';
 
+import { v4 as uuid } from 'uuid';
+import { createClient } from '@supabase/supabase-js';
+
+const supabase = createClient(
+  'https://bkkmhkpizbtpgcszpgsf.supabase.co',
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJra21oa3BpemJ0cGdjc3pwZ3NmIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTUyNDE1MTgsImV4cCI6MjAxMDgxNzUxOH0.LIk-aVkIcmtPfbM_1dYxbKd0VeYE2xhqrpJmEyxwWKw'
+);
+
 const BASE_URL = 'https://api.bigdatacloud.net/data/reverse-geocode-client';
 
 export function convertToEmoji(countryCode) {
@@ -73,7 +81,8 @@ function Form() {
       emoji,
       date,
       notes,
-      position: { lat, lng },
+      position: { lat: lat, lng: lng },
+      id: uuid(),
     };
     await createCity(newCity);
     navigate('/app');

@@ -1,6 +1,12 @@
 import { createContext, useContext, useEffect, useReducer } from 'react';
+import { createClient } from '@supabase/supabase-js';
 
-const BASE_URL = 'http://localhost:8000';
+const supabase = createClient(
+  'https://bkkmhkpizbtpgcszpgsf.supabase.co',
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJra21oa3BpemJ0cGdjc3pwZ3NmIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTUyNDE1MTgsImV4cCI6MjAxMDgxNzUxOH0.LIk-aVkIcmtPfbM_1dYxbKd0VeYE2xhqrpJmEyxwWKw'
+);
+
+// const BASE_URL = 'http://localhost:8000';
 
 const CitiesContext = createContext();
 
@@ -65,8 +71,7 @@ function CitiesProvider({ children }) {
     async function fetchCities() {
       dispatch({ type: 'loading' });
       try {
-        const res = await fetch(`${BASE_URL}/cities`);
-        const data = await res.json();
+        const { data } = await supabase.from('countries').select();
         dispatch({ type: 'cities/loaded', payload: data });
       } catch {
         dispatch({
@@ -84,9 +89,8 @@ function CitiesProvider({ children }) {
 
     dispatch({ type: 'loading' });
     try {
-      const res = await fetch(`${BASE_URL}/cities/${id}`);
-      const data = await res.json();
-      dispatch({ type: 'city/loaded', payload: data });
+      const { data } = await supabase.from('countries').select().eq('id', id);
+      dispatch({ type: 'city/loaded', payload: data?.shift() });
     } catch {
       dispatch({
         type: 'rejected',
@@ -98,15 +102,12 @@ function CitiesProvider({ children }) {
   async function createCity(newCity) {
     dispatch({ type: 'loading' });
     try {
-      const res = await fetch(`${BASE_URL}/cities/`, {
-        method: 'POST',
-        body: JSON.stringify(newCity),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      const data = await res.json();
-      dispatch({ type: 'city/created', payload: data });
+      const { data } = await supabase
+        .from('countries')
+        .insert(newCity)
+        .select();
+
+      dispatch({ type: 'city/created', payload: newCity });
     } catch {
       dispatch({
         type: 'rejected',
@@ -118,9 +119,7 @@ function CitiesProvider({ children }) {
   async function deleteCity(id) {
     dispatch({ type: 'loading' });
     try {
-      await fetch(`${BASE_URL}/cities/${id}`, {
-        method: 'DELETE',
-      });
+      const { data } = await supabase.from('countries').delete().eq('id', id);
 
       dispatch({ type: 'city/deleted', payload: id });
     } catch {
