@@ -5,24 +5,25 @@ import { useEffect } from 'react';
 import Spinner from './Spinner';
 import BackButton from './BackButton';
 
-const formatDate = date =>
+const formatDate = (date: string | Date) => {
+  if (!date) return 'No date available';
   new Intl.DateTimeFormat('en', {
     day: 'numeric',
     month: 'long',
     year: 'numeric',
     weekday: 'long',
   }).format(new Date(date));
+};
 
 function City() {
   const { id } = useParams();
   const { getCity, currentCity, isLoading } = useCities();
+  const { cityName, emoji, date, notes } = currentCity;
 
   useEffect(() => {
-    console.log(id);
+    if (!id) return;
     getCity(id);
   }, [id]);
-
-  const { cityName, emoji, date, notes } = currentCity;
 
   if (isLoading) return <Spinner />;
 
@@ -37,7 +38,7 @@ function City() {
 
       <div className={styles.row}>
         <h6>You went to {cityName} on</h6>
-        <p>{formatDate(date || null)}</p>
+        <p>{formatDate(date)}</p>
       </div>
 
       {notes && (

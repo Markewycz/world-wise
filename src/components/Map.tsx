@@ -1,4 +1,4 @@
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import styles from './Map.module.css';
 import {
   MapContainer,
@@ -14,30 +14,35 @@ import { useGeolocation } from '../hooks/useGeolocation';
 import Button from './Button';
 import { useUrlPosition } from '../hooks/useUrlPosition';
 
-function ChangeCenter({ position }) {
+type ChangeCenterProps = { position: [number, number] };
+
+function ChangeCenter({ position }: ChangeCenterProps) {
   const map = useMap();
   map.setView(position);
 
   return null;
 }
 
-function DeteckClick() {
+function DetectClick() {
   const navigate = useNavigate();
   useMapEvents({
-    click: e => navigate(`form?lat=${e.latlng.lat}&lng=${e.latlng.lng}`),
+    click: (e: { latlng: { lat: number; lng: number } }) =>
+      navigate(`form?lat=${e.latlng.lat}&lng=${e.latlng.lng}`),
   });
+
+  return null;
 }
 
 export default function Map() {
   const navigate = useNavigate();
   const { cities } = useCities();
-  const [mapPosition, setMapPosition] = useState([40, 0]);
+  const [mapPosition, setMapPosition] = useState<[number, number]>([40, 0]);
   const {
     isLoading: isLoadingPosition,
     position: geolocationPosition,
     getPosition,
   } = useGeolocation();
-  const [mapLat, mapLng] = useUrlPosition(geolocationPosition);
+  const [mapLat, mapLng] = useUrlPosition();
 
   useEffect(() => {
     if (mapLat && mapLng) setMapPosition([mapLat, mapLng]);
@@ -48,10 +53,13 @@ export default function Map() {
       setMapPosition([geolocationPosition.lat, geolocationPosition.lng]);
   }, [geolocationPosition]);
 
-  function handleNavigate(e) {
-    if (e.target.localName === 'button') return;
+  function handleNavigate(e: React.MouseEvent<HTMLDivElement>) {
+    if (e.target && e.target instanceof HTMLElement) {
+      if (e.target.localName === 'button') return;
+    }
     if (JSON.stringify(mapPosition) === JSON.stringify([mapLat, mapLng]))
       return;
+    if (mapLat === null || mapLng === null) return;
     navigate(`form?lat=${mapLat}&lng=${mapLng}`);
   }
 
@@ -64,7 +72,7 @@ export default function Map() {
       )}
       <MapContainer
         className={styles.map}
-        center={mapPosition}
+        center={[+mapPosition[0], +mapPosition[1]]}
         zoom={12}
         scrollWheelZoom={true}
       >
@@ -82,7 +90,7 @@ export default function Map() {
         ))}
 
         <ChangeCenter position={mapPosition} />
-        <DeteckClick />
+        <DetectClick />
       </MapContainer>
     </div>
   );

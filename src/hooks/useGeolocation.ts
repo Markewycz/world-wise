@@ -5,9 +5,9 @@ type PositionType = {
   lng: number;
 } | null;
 
-function useGeolocation(defaultPosition = null) {
+function useGeolocation() {
   const [isLoading, setIsLoading] = useState(false);
-  const [position, setPosition] = useState<PositionType>(defaultPosition);
+  const [position, setPosition] = useState<PositionType>(null);
   const [error, setError] = useState<string | null>(null);
 
   function getPosition() {

@@ -6,13 +6,12 @@ import { useNavigate } from 'react-router-dom';
 import Button from '../components/Button';
 
 export default function Login() {
-  // PRE-FILL FOR DEV PURPOSES
   const navigate = useNavigate();
-  const [email, setEmail] = useState('jack@example.com');
+  const [email, setEmail] = useState('john@example.com');
   const [password, setPassword] = useState('qwerty');
   const { login, isAuthenticated } = useAuth();
 
-  function handleSubmit(e) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
     if (email && password) login(email, password);

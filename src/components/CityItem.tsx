@@ -1,23 +1,25 @@
 import { Link } from 'react-router-dom';
 import styles from './CityItem.module.css';
-import { useCities } from '../context/CitiesContext';
+import { City, useCities } from '../context/CitiesContext';
 
-const formatDate = date =>
+type CityItemProps = { city: City };
+type handleClickEventType = { preventDefault: () => void };
+
+const formatDate = (date: string | Date) =>
   new Intl.DateTimeFormat('en', {
     day: 'numeric',
     month: 'long',
     year: 'numeric',
   }).format(new Date(date));
 
-export default function CityItem({ city }) {
+export default function CityItem({ city }: CityItemProps) {
   const { cityName, emoji, date, id, position } = city;
   const { currentCity, deleteCity } = useCities();
 
-  function handleClick(e) {
+  function handleClick(e: handleClickEventType) {
     e.preventDefault();
     deleteCity(id);
   }
-
 
   return (
     <li>

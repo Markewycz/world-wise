@@ -1,16 +1,62 @@
 import { createContext, useContext, useEffect, useReducer } from 'react';
 import { createClient } from '@supabase/supabase-js';
 
+export interface City {
+  id: string;
+  cityName: string;
+  country: string;
+  emoji: string;
+  date: string | Date;
+  notes: string;
+  position: {
+    lat: number;
+    lng: number;
+  };
+}
+
+type State = {
+  cities: City[];
+  isLoading: boolean;
+  currentCity: City | Record<string, never>;
+  error: string;
+};
+
+type Action =
+  | { type: 'loading' }
+  | { type: 'cities/loaded'; payload: City[] }
+  | { type: 'city/loaded'; payload: City }
+  | { type: 'city/created'; payload: City }
+  | { type: 'city/deleted'; payload: string }
+  | { type: 'rejected'; payload: string };
+
+type CitiesProviderProps = {
+  children: React.ReactNode;
+};
+
+const DefaultContext = {
+  cities: [],
+  isLoading: false,
+  currentCity: {},
+  error: '',
+  getCity: () => {},
+  createCity: () => {},
+  deleteCity: () => {},
+};
+
+interface Context extends State {
+  getCity: (id: string) => void;
+  createCity: (newCity: City) => void;
+  deleteCity: (id: string) => void;
+}
+
 const supabase = createClient(
   'https://bkkmhkpizbtpgcszpgsf.supabase.co',
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJra21oa3BpemJ0cGdjc3pwZ3NmIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTUyNDE1MTgsImV4cCI6MjAxMDgxNzUxOH0.LIk-aVkIcmtPfbM_1dYxbKd0VeYE2xhqrpJmEyxwWKw'
 );
 
-// const BASE_URL = 'http://localhost:8000';
+const CitiesContext = createContext<Context>(DefaultContext);
 
-const CitiesContext = createContext();
-
-function reducer(state, action) {
+function reducer(state: State, action: Action): State {
   switch (action.type) {
     case 'loading':
       return {
@@ -53,15 +99,14 @@ function reducer(state, action) {
       throw new Error('Uknown action type');
   }
 }
-
-const initialState = {
+const initialState: State = {
   cities: [],
   isLoading: false,
-  currentCity: {},
+  currentCity: {} as City,
   error: '',
 };
 
-function CitiesProvider({ children }) {
+function CitiesProvider({ children }: CitiesProviderProps) {
   const [{ cities, isLoading, currentCity, error }, dispatch] = useReducer(
     reducer,
     initialState
@@ -72,7 +117,7 @@ function CitiesProvider({ children }) {
       dispatch({ type: 'loading' });
       try {
         const { data } = await supabase.from('countries').select();
-        dispatch({ type: 'cities/loaded', payload: data });
+        dispatch({ type: 'cities/loaded', payload: data || [] });
       } catch {
         dispatch({
           type: 'rejected',
@@ -84,9 +129,7 @@ function CitiesProvider({ children }) {
     fetchCities();
   }, []);
 
-  async function getCity(id) {
-    if (Number(id) === currentCity.id) return;
-
+  async function getCity(id: string) {
     dispatch({ type: 'loading' });
     try {
       const { data } = await supabase.from('countries').select().eq('id', id);
@@ -99,13 +142,10 @@ function CitiesProvider({ children }) {
     }
   }
 
-  async function createCity(newCity) {
+  async function createCity(newCity: City) {
     dispatch({ type: 'loading' });
     try {
-      const { data } = await supabase
-        .from('countries')
-        .insert(newCity)
-        .select();
+      await supabase.from('countries').insert(newCity).select();
 
       dispatch({ type: 'city/created', payload: newCity });
     } catch {
@@ -116,10 +156,10 @@ function CitiesProvider({ children }) {
     }
   }
 
-  async function deleteCity(id) {
+  async function deleteCity(id: string) {
     dispatch({ type: 'loading' });
     try {
-      const { data } = await supabase.from('countries').delete().eq('id', id);
+      await supabase.from('countries').delete().eq('id', id);
 
       dispatch({ type: 'city/deleted', payload: id });
     } catch {
